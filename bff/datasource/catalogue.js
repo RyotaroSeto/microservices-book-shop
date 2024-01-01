@@ -13,30 +13,31 @@ const client = new catalogue_proto.Catalogue(
 )
 
 export class CatalogueDataSource {
-    constructor() {
+    constructor(options) {
         this.client = client
     }
+
     async getBook(id) {
         return new Promise((resolve, reject) => {
-            this.client.getBook({id: id}, (error, response) => {
+            this.client.GetBook({id: id}, (error, response) => {
                 if (error) {
                     return reject(error)
                 } else {
-                    return resolve(response)
+                    return resolve(response.book);
                 }
-            })
-        })
+            });
+        });
     }
 
     async listBooks() {
         return new Promise((resolve, reject) => {
-            this.client.listBooks({}, (error, response) => {
+            this.client.ListBooks({}, (error, response) => {
                 if (error) {
                     return reject(error)
                 } else {
-                    return resolve(response)
+                    return resolve(response.books);
                 }
-            })
-        })
+            });
+        });
     }
 }
