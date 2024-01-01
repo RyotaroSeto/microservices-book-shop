@@ -20,7 +20,7 @@ export class CatalogueDataSource {
         return new Promise((resolve, reject) => {
             this.client.getBook({id: id}, (error, response) => {
                 if (error) {
-                    return reject(err)
+                    return reject(error)
                 } else {
                     return resolve(response)
                 }
@@ -32,7 +32,7 @@ export class CatalogueDataSource {
         return new Promise((resolve, reject) => {
             this.client.listBooks({}, (error, response) => {
                 if (error) {
-                    return reject(err)
+                    return reject(error)
                 } else {
                     return resolve(response)
                 }
