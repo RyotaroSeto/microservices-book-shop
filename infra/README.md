@@ -1,23 +1,21 @@
 ## Docker SetUp
 
-- `docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management`
-- `docker build -t gihyo-ms-dev-book/catalogue:0.1 catalogue/`
 - `docker build -t gihyo-ms-dev-book/bff:0.1 bff/`
+- `docker build -t gihyo-ms-dev-book/catalogue:0.1 catalogue/`
+- `docker build -t gihyo-ms-dev-book/catalogue-db:0.1 catalogue-db/`
 - `docker build -t gihyo-ms-dev-book/frontend:0.1 frontend/`
+- `docker build -t gihyo-ms-dev-book/order:0.1 order/`
+- `docker build -t gihyo-ms-dev-book/order-db:0.1 order-db/`
+- `docker build -t gihyo-ms-dev-book/shipping:0.1 shipping/`
 
 ## Kind SetUp
 
-- `kind create cluster`
+- `kind create cluster --config infra/common/kind/kind-config.yaml`
+- `kind delete cluster`
 
 ## Deploy
 
-- `kind load docker-image gihyo-ms-dev-book/catalogue:0.1`
-- `kubectl apply -f infra/app/catalogue/catalogue.yaml`
-- `kind load docker-image gihyo-ms-dev-book/bff:0.1`
-- `kubectl apply -f infra/app/bff/bff.yaml`
-- `kind load docker-image gihyo-ms-dev-book/frontend:0.1`
-- `kubectl apply -f infra/app/frontend/frontend.yaml`
-- - ※Use kind load for local environment. Unnecessary in production because images are placed in the container registry.
+- `sh ./infra/scripts/deploy_all.sh`
 
 ## Port Forwarding
 
