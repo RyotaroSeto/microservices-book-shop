@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: order
-          image: gihyo-ms-dev-book/order:0.1
+          image: registry.gitlab.com/gihyo-ms-dev-book/handson/sec3/3.1-bookshop-sample/order
           env:
             - name: DATABASE
               value: "mongodb://order-db:27017/orders"
