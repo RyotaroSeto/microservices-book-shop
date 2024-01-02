@@ -1,5 +1,6 @@
 ## Docker SetUp
 
+- `docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management`
 - `docker build -t gihyo-ms-dev-book/catalogue:0.1 catalogue/`
 - `docker build -t gihyo-ms-dev-book/bff:0.1 bff/`
 - `docker build -t gihyo-ms-dev-book/frontend:0.1 frontend/`
