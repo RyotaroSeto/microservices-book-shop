@@ -13,28 +13,27 @@ const app = express();
 const httpServer = http.createServer(app);
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+  typeDefs,
+  resolvers,
 });
 
-await server.start();
+await server.start()
 
 app.use(
-    '/graphql',
-    cors(),
-    bodyParser.json(),
-    expressMiddleware(server, {
-        context: async ({ req }) => {
-            return {
-              dataSources: {
-                catalogueApi: new CatalogueDataSource()
-              }
-            }
-         }
+  '/graphql',
+  cors(),
+  bodyParser.json(),
+  expressMiddleware(server, {
+    context: async ({ req }) => {
+        return {
+          dataSources: {
+            catalogueApi: new CatalogueDataSource()
+          }
+        }
+      }
     }),
-
 );
 
 app.listen(4000)
 
-console.log(`🚀 Server ready at http://localhost:4000/graphql`);
+console.log(`🚀 Server ready at http://localhost:4000/`);
