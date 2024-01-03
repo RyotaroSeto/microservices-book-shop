@@ -15,14 +15,15 @@
 
 ## Deploy
 
-- `sh ./infra/scripts/deploy_all.sh`
-
-## Port Forwarding
-
-- `kubectl port-forward service/frontend 8080:80`
-- `kubectl port-forward service/bff 4000:4000`
-- ※Use port forwarding for local environment. In production, use ingress.
+- `sh ./scripts/deploy_all.sh`
 
 ## Log Checking
 
 - `kubectl logs <pod-name> -c <container-name>`
+
+## Istio
+
+- Istio のインストール(※ここでは profile=demo にしているが本番では使わない)
+  - `istioctl install --set profile=demo -f common/istio/ingressgateway_NodePort.yaml -y`
+- サイドカープロキシの自動挿入設定を有効
+  - `kubectl label namespace default istio-injection=enabled`
