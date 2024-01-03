@@ -69,4 +69,8 @@
   - `kubectl apply -f common/istio/request-authentication-keycloak.yaml`
 
 - bff に対するアクセスは JWT トークンが付与されている場合のみアクセスを許可(認可設定)
+
   - `kubectl apply -f common/istio/authorization-policy-keycloak.yaml`
+
+- 認証サーバー(keycloak)デプロイ
+  - `kubectl apply -f auth/k8s/keycloak.yaml`
